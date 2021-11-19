@@ -20,7 +20,7 @@ app.listen(port, () => {
 })
 
 // Get API
-app.get(`/get-all`, (req, res) => {
+app.get(`/get`, (req, res) => {
 
     const vision = require('@google-cloud/vision');
 
