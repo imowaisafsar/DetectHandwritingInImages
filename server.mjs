@@ -24,12 +24,13 @@ app.get(`/get`, (req, res) => {
 
     res.send(data);
 
+    // Imports the Google Cloud client library
     const vision = require('@google-cloud/vision');
 
     // Creates a client
     const client = new vision.ImageAnnotatorClient();
 
-    const fileName = './src/imp.png';
+    const fileName = '/src/imp.png';
 
     // Read a local image as a text document
     const [result] = await client.documentTextDetection(fileName);
@@ -52,8 +53,9 @@ app.get(`/get`, (req, res) => {
             });
         });
     });
+    // [END vision_fulltext_detection]
 
-})
+});
 
 // async function detectFulltext(fileName) {
 //     // [START vision_fulltext_detection]
