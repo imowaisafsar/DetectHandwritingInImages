@@ -22,6 +22,8 @@ app.listen(port, () => {
 // Get API
 app.get(`/get`, (req, res) => {
 
+    res.send(data);
+
     const vision = require('@google-cloud/vision');
 
     // Creates a client
@@ -50,8 +52,6 @@ app.get(`/get`, (req, res) => {
             });
         });
     });
-
-    res.send(data);
 
 })
 
