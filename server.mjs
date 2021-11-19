@@ -8,7 +8,7 @@ app.use(express.json());
 app.use(morgan('short'));
 
 const port = process.env.PORT || 3000;
-let data = 'Success request.';
+const data = 'Welcome to Heroku App.';
 
 app.use((req, res, next) => {
     console.log(`Request comes, ${req.body}`);
@@ -19,8 +19,12 @@ app.listen(port, () => {
     console.log(`Server is running.`)
 })
 
+app.get(`/intro`, (req, res) => {
+    res.send(data);
+});
+
 // Get API
-app.get(`/get`, (req, res) => {
+app.get(`/detect`, (req, res) => {
 
     res.send(data);
 
