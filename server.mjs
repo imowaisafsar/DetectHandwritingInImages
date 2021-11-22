@@ -12,7 +12,7 @@ const port = process.env.PORT || 3000;
 const data = 'Welcome to Heroku App.';
 
 app.use((req, res, next) => {
-    console.log(`Request comes, ${JSON.parse(req.body)}`);
+    console.log(`Request comes, ${req.body}`);
     next();
 })
 
