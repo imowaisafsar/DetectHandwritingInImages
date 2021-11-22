@@ -25,6 +25,8 @@ app.get(`/intro`, (req, res) => {
 });
 
 app.get(`/recog-handw`, async (req, res) => {
+    
+    debugger;
 
     // console.log(req);
     // res.send('running');
