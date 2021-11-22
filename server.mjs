@@ -26,7 +26,7 @@ app.get(`/intro`, (req, res) => {
 
 app.get(`/recog`, async (req, res) => {
 
-    console.log(req);
+    // console.log(req);
 
     // Creates a client
     const client = new vision.ImageAnnotatorClient();
