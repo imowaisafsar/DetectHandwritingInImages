@@ -1,6 +1,7 @@
 import express from "express";
 import morgan from 'morgan';
 import cors from 'cors';
+import * as vision from '@google-cloud/vision';
 
 const app = express();
 app.use(cors());
@@ -22,6 +23,23 @@ app.listen(port, () => {
 app.get(`/intro`, (req, res) => {
     res.send(data);
 });
+
+app.get(`/recog-handw`, async (req, res) => {
+
+    // console.log(req);
+    // res.send('running');
+
+    // Creates a client
+    const client = new vision.ImageAnnotatorClient();
+
+    const fileName = './resources/handwritten.jpg';
+    // Read a local image as a text document
+    const [result] = await client.documentTextDetection(fileName);
+
+    res.send(result);
+})
+
+// $env:GOOGLE_APPLICATION_CREDENTIALS="D:\Projects\DetectHandwritingInImages\restro -332705-1c2a816449c7.json"
 
 // Get API
 // app.get(`/detect`, (req, res) => {
