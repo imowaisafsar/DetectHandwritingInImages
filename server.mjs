@@ -12,12 +12,12 @@ const port = process.env.PORT || 3000;
 const data = 'Welcome to Heroku App.';
 
 app.use((req, res, next) => {
-    console.log(`Request comes, ${req.body}`);
+    console.log(`Request comes, ${JSON.parse(req.body)}`);
     next();
 })
 
 app.listen(port, () => {
-    console.log(`Server is running.`)
+    console.log(`Server is running on port: ${port}`);
 })
 
 app.get(`/intro`, (req, res) => {
@@ -26,16 +26,14 @@ app.get(`/intro`, (req, res) => {
 
 app.get(`/recog`, async (req, res) => {
 
-    // console.log(req);
-
-    // Creates a client
-    const client = new vision.ImageAnnotatorClient();
-
-    const fileName = './resources/handwritten.jpg';
-    // Read a local image as a text document
-    const [result] = await client.documentTextDetection(fileName);
-
-    res.send(result);
+    try {
+        const client = new vision.ImageAnnotatorClient();
+        const fileName = './resources/handwritten.jpg';
+        const [result] = await client.documentTextDetection(fileName);
+        res.status(200).send(result);
+    } catch (ex) {
+        res.status(400).send(ex);
+    }
 })
 
 // $env:GOOGLE_APPLICATION_CREDENTIALS="D:\Projects\DetectHandwritingInImages\restro -332705-1c2a816449c7.json"
