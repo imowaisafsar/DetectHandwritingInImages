@@ -24,12 +24,9 @@ app.get(`/intro`, (req, res) => {
     res.send(data);
 });
 
-app.get(`/recog-handw`, async (req, res) => {
-    
-    debugger;
+app.get(`/recog`, async (req, res) => {
 
-    // console.log(req);
-    // res.send('running');
+    console.log(req);
 
     // Creates a client
     const client = new vision.ImageAnnotatorClient();
@@ -43,79 +40,5 @@ app.get(`/recog-handw`, async (req, res) => {
 
 // $env:GOOGLE_APPLICATION_CREDENTIALS="D:\Projects\DetectHandwritingInImages\restro -332705-1c2a816449c7.json"
 
-// Get API
-// app.get(`/detect`, (req, res) => {
-
-//     res.send(data);
-
-//     // Imports the Google Cloud client library
-//     const vision = require('@google-cloud/vision');
-
-//     // Creates a client
-//     const client = new vision.ImageAnnotatorClient();
-
-//     const fileName = '/src/imp.png';
-
-//     // Read a local image as a text document
-//     const [result] = await client.documentTextDetection(fileName);
-//     const fullTextAnnotation = result.fullTextAnnotation;
-//     console.log(`Full text: ${fullTextAnnotation.text}`);
-//     fullTextAnnotation.pages.forEach(page => {
-//         page.blocks.forEach(block => {
-//             console.log(`Block confidence: ${block.confidence}`);
-//             block.paragraphs.forEach(paragraph => {
-//                 console.log(`Paragraph confidence: ${paragraph.confidence}`);
-//                 paragraph.words.forEach(word => {
-//                     const wordText = word.symbols.map(s => s.text).join('');
-//                     console.log(`Word text: ${wordText}`);
-//                     console.log(`Word confidence: ${word.confidence}`);
-//                     word.symbols.forEach(symbol => {
-//                         console.log(`Symbol text: ${symbol.text}`);
-//                         console.log(`Symbol confidence: ${symbol.confidence}`);
-//                     });
-//                 });
-//             });
-//         });
-//     });
-//     // [END vision_fulltext_detection]
-
-// });
-
-// async function detectFulltext(fileName) {
-//     // [START vision_fulltext_detection]
-
-//     // Imports the Google Cloud client library
-//     const vision = require('@google-cloud/vision');
-
-//     // Creates a client
-//     const client = new vision.ImageAnnotatorClient();
-
-//     /**
-//      * TODO(developer): Uncomment the following line before running the sample.
-//      */
-//     // const fileName = 'Local image file, e.g. /path/to/image.png';
-
-//     // Read a local image as a text document
-//     const [result] = await client.documentTextDetection(fileName);
-//     const fullTextAnnotation = result.fullTextAnnotation;
-//     console.log(`Full text: ${fullTextAnnotation.text}`);
-//     fullTextAnnotation.pages.forEach(page => {
-//         page.blocks.forEach(block => {
-//             console.log(`Block confidence: ${block.confidence}`);
-//             block.paragraphs.forEach(paragraph => {
-//                 console.log(`Paragraph confidence: ${paragraph.confidence}`);
-//                 paragraph.words.forEach(word => {
-//                     const wordText = word.symbols.map(s => s.text).join('');
-//                     console.log(`Word text: ${wordText}`);
-//                     console.log(`Word confidence: ${word.confidence}`);
-//                     word.symbols.forEach(symbol => {
-//                         console.log(`Symbol text: ${symbol.text}`);
-//                         console.log(`Symbol confidence: ${symbol.confidence}`);
-//                     });
-//                 });
-//             });
-//         });
-//     });
-//     // [END vision_fulltext_detection]
-// }
+// & web:$env:GOOGLE_APPLICATION_CREDENTIALS="https://raw.githubusercontent.com/owais-afsar/DetectHandwritingInImages/main/restro-332705-1c2a816449c7.json"
 
