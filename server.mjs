@@ -30,7 +30,7 @@ app.get(`/recog`, async (req, res) => {
         debugger
         const client = new vision.ImageAnnotatorClient();
         // console.log(client);
-        const fileName = './resources/handwritten.jpg';
+        const fileName = './main/resources/handwritten.jpg';
         console.log(fileName);
         const [result] = await client.documentTextDetection(fileName);
         console.log(result);
