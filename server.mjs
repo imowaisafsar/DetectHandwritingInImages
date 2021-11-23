@@ -29,15 +29,16 @@ app.get(`/intro`, (req, res) => {
     res.send(data);
 });
 
-app.post(`/recog`, express.json({ limit: 104857600 }), async (req, res) => {
+app.get(`/recog`, async (req, res) => {
 
-    console.log(req.body);
+    // console.log(req.body);
     try {
         const client = new vision.ImageAnnotatorClient();
         // console.log(client);
-        const fileName = './blob/main/resources/handwritten.jpg';
+        // const fileName = './blob/main/resources/handwritten.jpg';
+        const fileName = './resources/handwritten.jpg';
         // const fileName = req.body.image;
-        console.log(fileName);
+        // console.log(fileName);
         const [result] = await client.documentTextDetection(fileName);
         console.log(result);
         res.status(200).send(result);
